@@ -1,11 +1,16 @@
 'use strict';
 
-const items = document.querySelectorAll('#thumbs a');
-const largePicture = document.querySelector('#largeImg');
+const galery = document.querySelector('.gallery__list');
+const largeImg = document.querySelector('#largeImg');
 
-for (const item of items) {
-  item.addEventListener('click', (ev) => {
-    ev.preventDefault();
-    largePicture.src = `${item.href}`;
-  });
-}
+galery.addEventListener('click', (e) => {
+  const link = e.target.closest('.list-item__link');
+
+  if (!link) {
+    return;
+  }
+
+  e.preventDefault();
+  largeImg.src = `${link.href}`;
+});
+
